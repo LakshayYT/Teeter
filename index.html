@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teeter</title>
+<!-- YouTube Playables SDK: MUST load before any game code. -->
+<script src="https://www.youtube.com/game_api/v1"></script>
+<style>
+/* FONT: the game's display font is "Lilita One" (SIL OFL). It is NOT bundled by default (it could not be downloaded when this
+   package was built), so the game uses its built-in fallback stack (Trebuchet MS / system-ui). To restore the original look,
+   follow fonts/README-font.txt: add fonts/LilitaOne-Regular.woff2, then use the packaging script with --font (it enables this rule). */
+/*FONT-FACE-BEGIN
+@font-face{font-family:"Lilita One";src:url("fonts/LilitaOne-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+FONT-FACE-END*/
+:root{--bg:#e9e4d8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10142a}}
+:root[data-theme="dark"]{--bg:#10142a}
+html,body{height:100%;margin:0;overscroll-behavior:none}
+body{background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;touch-action:none}
+canvas{display:block;touch-action:none}
+/* Loading splash: shown immediately (static HTML), removed by game.js right before gameReady() */
+#splash{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;
+ background:radial-gradient(ellipse at 50% 35%,#3b2a8a 0%,#160e36 70%);color:#ffe9a8;font-family:"Lilita One","Trebuchet MS",system-ui,sans-serif}
+#splash .logo{font-size:min(16vw,16vh,72px);letter-spacing:.06em;text-shadow:0 4px 0 #241437}
+#splash .spin{width:44px;height:44px;border-radius:50%;border:6px solid rgba(255,255,255,.2);border-top-color:#ffd166;animation:sp 0.9s linear infinite}
+#splash .msg{font-size:20px;opacity:.9}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style></head>
+<body><canvas id="c"></canvas>
+<div id="splash" role="status" aria-live="polite"><div class="logo">TEETER</div><div class="spin"></div><div class="msg">Loading&hellip;</div></div>
+<script src="game.js"></script>
+</body></html>
